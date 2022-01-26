@@ -14,9 +14,7 @@ import javax.persistence.Table;
 @Table(name = "breedDog")
 public class Breed implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -2925004668626113286L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
