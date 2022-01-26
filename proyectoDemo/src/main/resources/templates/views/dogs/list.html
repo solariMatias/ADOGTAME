@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+<head th:replace="planillas/template :: head">
+<meta charset="ISO-8859-1">
+<title>Lista perros</title>
+</head>
+<body>
+<nav th:replace="planillas/template :: navbar"></nav>
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		<p th:text="${perros}"></p>
+	</div>
+</body>
+</html>
