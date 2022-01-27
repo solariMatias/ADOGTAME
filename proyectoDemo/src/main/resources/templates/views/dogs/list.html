@@ -11,7 +11,6 @@
 		
 	</div>
 
-
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -19,15 +18,16 @@
 					<thead>
 						<tr>
 							<th scope="col">Id</th>
-							<th scope="col">Edad</th>
+							<th scope="col">Fecha de ingreso</th>
 							<th scope="col">Raza</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="cl:${perros}">
 							<td th:text="${cl.id}"></td>
-							<td th:text="${cl.age}"> año</td>
+							<td th:text="${cl.age}"></td>
 							<td th:text="${cl.dogBreed.breedname}"></td>
+							
 						</tr>
 					</tbody>
 				</table>

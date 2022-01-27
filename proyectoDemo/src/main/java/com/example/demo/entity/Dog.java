@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,14 +16,14 @@ import javax.persistence.Table;
 @Table(name = "doggos")
 public class Dog implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5706448234090067961L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	private int id;
-	private short age;
+	private Date birthday;
+	@ManyToOne
+	@JoinColumn(name = "BreedId")
+	private Breed dogBreed;
 
 	public int getId() {
 		return id;
@@ -29,14 +31,6 @@ public class Dog implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public short getAge() {
-		return age;
-	}
-
-	public void setAge(short age) {
-		this.age = age;
 	}
 
 	public Breed getDogBreed() {
@@ -47,15 +41,17 @@ public class Dog implements Serializable {
 		this.dogBreed = dogBreed;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "BreedId")
-	private Breed dogBreed;
+	public Date getAge() {
+		return birthday;
+	}
+
+	public void setAge(Date birthday) {
+		this.birthday = birthday;
+	}
 
 	@Override
 	public String toString() {
-		return "Dog [id=" + id + ", age=" + age + ", dogBreed=" + dogBreed + "]";
+		return "Dog [id=" + id + ", birthday=" + birthday + ", dogBreed=" + dogBreed + "]";
 	}
-
-	
 
 }
