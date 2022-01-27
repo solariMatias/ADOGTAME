@@ -21,10 +21,11 @@ public class UserController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-
 		List<Dog> listDogs = dogService.listAll();
 		model.addAttribute("titulo", "Lista de perros");
 		model.addAttribute("perros", listDogs);
 		return "/views/dogs/list";
 	}
+	
+	
 }
