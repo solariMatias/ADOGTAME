@@ -11,6 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "doggos")
@@ -20,9 +26,10 @@ public class Dog implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date birthday;
 	@ManyToOne
-	@JoinColumn(name = "BreedId")
+	@JoinColumn(name = "breed_id")
 	private Breed dogBreed;
 
 	public int getId() {
@@ -49,9 +56,13 @@ public class Dog implements Serializable {
 		this.birthday = birthday;
 	}
 
+	public String getFormatedDate() {
+		SimpleDateFormat dt = new SimpleDateFormat("dd-mm-yyyy");
+		return dt.format(birthday);
+	}
 	@Override
 	public String toString() {
-		return "Dog [id=" + id + ", birthday=" + birthday + ", dogBreed=" + dogBreed + "]";
+		return "Dog [id=" + id + ", birthday=" + birthday + ", Breed=" + dogBreed + "]";
 	}
 
 }

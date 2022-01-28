@@ -8,7 +8,7 @@
 	<nav th:replace="planillas/template :: navbar"></nav>
 	<div class="container">
 		<h1 th:text="${titulo}"></h1>
-		
+
 	</div>
 
 	<div class="container">
@@ -23,11 +23,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="cl:${perros}">
-							<td th:text="${cl.id}"></td>
-							<td th:text="${cl.age}"></td>
-							<td th:text="${cl.dogBreed.breedname}"></td>
-							
+						<tr th:each="dog:${perros}">
+							<td th:text="${dog.id}"></td>
+							<td th:text="${dog.getFormatedDate}"></td>
+							<td th:text="${dog.dogBreed.breedname}"></td>
 						</tr>
 					</tbody>
 				</table>
