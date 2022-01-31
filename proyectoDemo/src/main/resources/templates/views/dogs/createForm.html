@@ -25,8 +25,8 @@
 						th:field="*{dogBreed}" class="form-control" id="select">
 						
 						<option th:each="dogBreed:${breed}"
-							th:value="${dogBreed.BreedId}"
-							th:text="${dogBreed.Breed}"
+							th:value="${dogBreed.getId}"
+							th:text="${dogBreed.getBreedname}"
 						/>
 						
 					</select>
