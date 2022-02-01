@@ -17,7 +17,7 @@
 		<nav
 			class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm" th:fragment="navbar">
 			<div class="container">
-				<a class="navbar-brand" href="#"> <strong
+				<a class="navbar-brand" th:href="@{/}"> <strong
 					class="h6 mb-0 font-weight-bold text-uppercase">ADOGTAME</strong></a>
 				<button class="navbar-toggler navbar-toggler-right" type="button"
 					data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -27,11 +27,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="#">Home
+						<li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio
 								<span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Disabled</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/views/dogs/}">Perros</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
 					</ul>
 				</div>
 			</div>

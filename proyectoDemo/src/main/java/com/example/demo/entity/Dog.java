@@ -2,8 +2,11 @@ package com.example.demo.entity;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,10 +30,13 @@ public class Dog implements Serializable {
 
 	private static final long serialVersionUID = -5706448234090067961L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
 	private int id;
-	@Temporal(TemporalType.DATE)
-	private Date birthday;
+
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "birthday")
+	@NotNull(message = "Ingrese una fecha válida")
+	private LocalDate age;
 	@ManyToOne
 	@JoinColumn(name = "breed_id")
 	private Breed dogBreed;
@@ -48,21 +57,23 @@ public class Dog implements Serializable {
 		this.dogBreed = dogBreed;
 	}
 
-	public Date getAge() {
-		return birthday;
+	public LocalDate getAge() {
+		return age;
 	}
 
-	public void setAge(Date birthday) {
-		this.birthday = birthday;
+	public void setAge(LocalDate birthday) {
+		this.age = birthday;
 	}
 
 	public String getFormatedDate() {
-		SimpleDateFormat dt = new SimpleDateFormat("dd-mm-yyyy");
-		return dt.format(birthday);
+
+		String formattedDate = age.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		return formattedDate;
 	}
+
 	@Override
 	public String toString() {
-		return "Dog [id=" + id + ", birthday=" + birthday + ", Breed=" + dogBreed + "]";
+		return "Dog [id=" + id + ", birthday=" + age + ", Breed=" + dogBreed + "]";
 	}
 
 }

@@ -19,11 +19,12 @@ public class Breed implements Serializable {
 	private static final long serialVersionUID = -2925004668626113286L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	private int BreedId;
+	private long BreedId;
 	private String Breed;
 
-	public int getId() {
-		return BreedId;
+	public Integer getId() {
+		Integer i = Math.toIntExact(BreedId);
+		return i;
 	}
 
 	public void setId(int id) {

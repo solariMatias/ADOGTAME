@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,9 +39,15 @@ public class DogController {
 	public String createDog(Model model) {
 		Dog perro = new Dog();
 		List<Breed> listBreeds= this.breedService.listBreed();
-		model.addAttribute("titulo", "Formulario: nuevo perro.");
+		model.addAttribute("titulo", "Alta de perro");
 		model.addAttribute("perro", perro);
 		model.addAttribute("breed", listBreeds);
 		return "/views/dogs/createForm";
+	}
+	
+	@PostMapping("/save")
+	public String save(@Valid @ModelAttribute Dog dog) {
+		dogService.save(dog);
+		return "redirect:/views/dogs/";
 	}
 }
