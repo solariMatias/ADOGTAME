@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org">
 <head th:replace="planillas/template :: head">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Lista perros</title>
 </head>
 <body>
@@ -14,9 +14,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<a class="btn btn-primary btn-sm"
-					th:href="@{/views/dogs/create}" th:text="'Nuevo perro'"
-					title="Crear nuevo registro"> </a>
+				<a class="btn btn-primary btn-sm" th:href="@{/views/dogs/create}"
+					th:text="'Nuevo perro'" title="Crear nuevo registro"> </a>
 				<table class="table table-image">
 					<thead>
 						<tr>
@@ -30,6 +29,17 @@
 							<td th:text="${dog.id}"></td>
 							<td th:text="${dog.getFormatedDate}"></td>
 							<td th:text="${dog.dogBreed.breedname}"></td>
+							<td>
+								<a class="btn btn-success btn-sm"
+								th:href="@{/views/dogs/edit/} + ${dog.id}"
+								th:text="'Editar'" title="Editar registro"> </a>
+							</td>
+							<td>
+								<a class="btn btn-danger btn-sm"
+								th:href="@{/views/dogs/delete/} + ${dog.id}"
+								th:text="'Eliminar'" title="Eliminar registro"
+								onclick="return confirm('¿Está seguro de eliminar este registro?')";> </a>
+							</td>
 						</tr>
 					</tbody>
 				</table>

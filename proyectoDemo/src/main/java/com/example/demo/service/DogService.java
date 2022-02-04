@@ -10,7 +10,9 @@ public interface DogService {
 
 	public void save(Dog dog);
 
-	public Dog searchDogById(Long id);
+	public Dog searchDogById(Long idDog);
 
 	public void delete(Long id);
+	
+	public boolean exist(Long idDog);
 }

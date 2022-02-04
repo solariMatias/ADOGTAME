@@ -7,6 +7,7 @@
 
 </head>
 <body>
+
 	<nav th:replace="planillas/template :: navbar"></nav>
 	<div class="container">
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
@@ -14,12 +15,14 @@
 			<form th:action="@{/views/dogs/save}" th:object="${perro}"
 				method="post">
 				<div class="form-group">
-					<label for="birthday">Fecha de ingreso: </label> <input type="date"
-						th:field="*{age}" class="form-control">
+				<input type="hidden" th:field="*{id}">
+					<label for="age" >Fecha de ingreso: </label> 
+					<input type="date" th:field="*{age}" class="form-control" max="2999-12-31">
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small>
 				</div>
 				<div class="form-group">
-					<label for="raza">Raza del perro: </label> <select
-						th:field="*{dogBreed}" class="form-control" id="select">
+					<label for="raza">Raza del perro: </label> 
+					<select th:field="*{dogBreed}" class="form-control" id="select">
 						<option th:each="dogBreed:${breed}" th:value="${dogBreed.getId}"
 							th:text="${dogBreed.getBreedname}" />
 					</select>

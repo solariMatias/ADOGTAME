@@ -33,5 +33,10 @@ public class DogServiceImplements implements DogService {
 	public void delete(Long id) {
 		dogRepository.deleteById(id);
 	}
+	
+	@Override
+	public boolean exist(Long id) {
+		return dogRepository.existsById(id);
+	}
 
 }

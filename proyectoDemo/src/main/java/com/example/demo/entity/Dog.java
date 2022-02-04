@@ -31,7 +31,7 @@ public class Dog implements Serializable {
 	private static final long serialVersionUID = -5706448234090067961L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-	private int id;
+	private Long id;
 
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "birthday")
@@ -41,11 +41,11 @@ public class Dog implements Serializable {
 	@JoinColumn(name = "breed_id")
 	private Breed dogBreed;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
