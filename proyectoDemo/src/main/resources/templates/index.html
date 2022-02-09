@@ -5,10 +5,25 @@
 <title>ADOGTAME</title>
 </head>
 <link rel="stylesheet" th:href="@{/css/homestyle.css}">
-<body>
-
-	<nav th:replace="planillas/template :: navbar"></nav>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@649&display=swap" rel="stylesheet">
+<body data-spy="scroll" data-target="navbar">
+	<header class="header">
+		<nav class="navbar" th:replace="planillas/template :: navbar"></nav>
+	</header>
+	<div class="middle-images">
+		<figure class="left">
+			<img  th:src="@{/images/dogs_human.png}">
+			<figcaption>Cuidamos a nuestros perros como si fueran
+				nuestra vida.</figcaption>
+		</figure>
+		<figure class="right">
+			<img  th:src="@{/images/dogs.png}">
+			<figcaption>Te damos la posibilidad de cambiarle la vida al perro que escojas.</figcaption>
+		</figure>
+	</div>
+	<footer class="contact" th:replace="planillas/template :: footer"></footer>
 </body>
 
 </html>

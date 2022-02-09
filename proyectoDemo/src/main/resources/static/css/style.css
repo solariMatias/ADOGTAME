@@ -1,24 +1,55 @@
 .text-small {
-    font-size: 0.9rem !important;
+	font-size: 0.9rem !important;
 }
 
 .header {
-    background-color: #00d2ff;
-    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
+	background-color: #00d2ff;
+	background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
 }
 
-.sections{
-    background: black;
+.footerr {
+	background-color: black;
+	text-align: center;
 }
 
-.section-2 {
-    background: black;
+.tittle {
+	color: white;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	top: -15px;
+	font-family: 'Nunito Sans', sans-serif;
 }
 
-.section-3 {
-    background: #EAEAEA;
+.fa {
+	padding: 10px;
+	font-size: 15px;
+	width: 35px;
+	text-align: center;
+	text-decoration: none;
+	background-color: rgba(255, 255, 255, 0.3);
+	color: white;
+	border-radius: 50%;
 }
 
-.section-4 {
-    background: #E5E5E5;
+.bottomtext-footer {
+	background-color: black;
+	color: rgba(255, 255, 255, 0.3);
+	height: 35px;
+	text-align: center;
+}
+
+.space {
+	width: 25px;
+}
+
+.morespace {
+	height: 50px;
+	background-color: black;
+}
+
+.container {
+	position: relative;
+	justify-content: center;
 }

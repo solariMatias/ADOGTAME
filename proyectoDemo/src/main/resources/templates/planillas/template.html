@@ -13,16 +13,22 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap"
+	rel="stylesheet">
 </head>
-
 <body>
 	<header class="header sticky-top">
 		<nav
-			class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm" id="navbar"
-			th:fragment="navbar">
+			class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top"
+			id="navbar" th:fragment="navbar">
 			<div class="container">
 				<a class="navbar-brand" th:href="@{/}"> <strong
 					class="h6 mb-0 font-weight-bold text-uppercase" id="logo">ADOGTAME</strong></a>
@@ -39,14 +45,36 @@
 						</a></li>
 						<li class="nav-item"><a class="nav-link"
 							th:href="@{/views/dogs/}">Perros</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/#contact}">Contacto</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</header>
-	<footer> </footer>
+	<!-- Footer -->
+	<!-- Remove the container if you want to extend the Footer to full width. -->
+
+	<div class="container">
+		<footer th:fragment="contact" class="footerr" id="contact">
+			<div class="morespace"></div>
+			<div class="container d-flex justify-content-center py-5">
+				<div class="tittle">
+					<a>Adogtame.com</a>
+				</div>
+				<a href="#" class="fa fa-facebook"></a>
+				<div class="space"></div>
+				<a href="#" class="fa fa-instagram"></a>
+				<div class="space"></div>
+				<a href="#" class="fa fa-twitter"></a>
+			</div>
+			<!-- Copyright -->
+			<div class="bottomtext-footer">
+				<a>© 2022 Copyright. Created by Solari Matias</a>
+			</div>
+			<!-- Copyright -->
+		</footer>
+	</div>
+	<!-- End of .container -->
 </body>
-
 </html>
-
