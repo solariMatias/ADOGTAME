@@ -20,26 +20,28 @@
 					<thead>
 						<tr>
 							<th scope="col">Id</th>
+							<th scope="col">Foto</th>
 							<th scope="col">Fecha de ingreso</th>
 							<th scope="col">Raza</th>
 						</tr>
 					</thead>
+					
 					<tbody>
 						<tr th:each="dog:${perros}">
 							<td th:text="${dog.id}"></td>
+							<td><img class="img-fluid img-thumbnail" th:src="@{'/uploads/'+${dog.photo}}"
+								th:alt="${dog.photo}"></<td>
 							<td th:text="${dog.getFormatedDate}"></td>
 							<td th:text="${dog.dogBreed.breedname}"></td>
-							<td>
-								<a class="btn btn-success btn-sm"
-								th:href="@{/views/dogs/edit/} + ${dog.id}"
-								th:text="'Editar'" title="Editar registro"> </a>
-							</td>
-							<td>
-								<a class="btn btn-danger btn-sm"
+
+							<td><a class="btn btn-success btn-sm"
+								th:href="@{/views/dogs/edit/} + ${dog.id}" th:text="'Editar'"
+								title="Editar registro"> </a></td>
+							<td><a class="btn btn-danger btn-sm"
 								th:href="@{/views/dogs/delete/} + ${dog.id}"
 								th:text="'Eliminar'" title="Eliminar registro"
-								onclick="return confirm('¿Está seguro de eliminar este registro?')";> </a>
-							</td>
+								onclick="return confirm('¿Está seguro de eliminar este registro?')">
+							</a></td>
 						</tr>
 					</tbody>
 				</table>

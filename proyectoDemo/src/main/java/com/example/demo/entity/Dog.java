@@ -40,6 +40,7 @@ public class Dog implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "breed_id")
 	private Breed dogBreed;
+	private String photos;
 
 	public Long getId() {
 		return id;
@@ -74,6 +75,14 @@ public class Dog implements Serializable {
 	@Override
 	public String toString() {
 		return "Dog [id=" + id + ", birthday=" + age + ", Breed=" + dogBreed + "]";
+	}
+
+	public String getPhoto() {
+		return photos;
+	}
+
+	public void setPhoto(String photos) {
+		this.photos = photos;
 	}
 
 }
