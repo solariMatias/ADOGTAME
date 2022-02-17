@@ -1,54 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http//www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="planillas/template :: head">
 <meta charset="UTF-8">
-<title>Lista perros</title>
 </head>
+<link rel="stylesheet" th:href="@{/css/liststyle.css}">
+<link rel='styleshet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 <body>
 	<nav th:replace="planillas/template :: navbar"></nav>
-	<div class="container">
+	<div class="separatorTittle"></div>
+	<div class="ttitlePage">
 		<h1 th:text="${titulo}"></h1>
-
 	</div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<a class="btn btn-primary btn-sm" th:href="@{/views/dogs/create}"
-					th:text="'Nuevo perro'" title="Crear nuevo registro"> </a>
-				<table class="table table-image">
-					<thead>
-						<tr>
-							<th scope="col">Id</th>
-							<th scope="col">Foto</th>
-							<th scope="col">Fecha de ingreso</th>
-							<th scope="col">Raza</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<tr th:each="dog:${perros}">
-							<td th:text="${dog.id}"></td>
-							<td><img class="img-fluid img-thumbnail" th:src="@{'/uploads/'+${dog.photo}}"
-								th:alt="${dog.photo}"></<td>
-							<td th:text="${dog.getFormatedDate}"></td>
-							<td th:text="${dog.dogBreed.breedname}"></td>
-
-							<td><a class="btn btn-success btn-sm"
-								th:href="@{/views/dogs/edit/} + ${dog.id}" th:text="'Editar'"
-								title="Editar registro"> </a></td>
-							<td><a class="btn btn-danger btn-sm"
-								th:href="@{/views/dogs/delete/} + ${dog.id}"
-								th:text="'Eliminar'" title="Eliminar registro"
-								onclick="return confirm('¿Está seguro de eliminar este registro?')">
-							</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+	<div class="boxTittle">
+		<a class="btn-create  btn-sm" th:href="@{/views/dogs/create}"
+			th:text="'+ Agregar'" title="Crear nuevo registro"> </a>
+	</div>
+	<div class="box-container">
+		<div class="box text-center" th:each="dog:${perros}">
+			<!-- FOTO -->
+			<img th:src="@{'/uploads/'+${dog.photo}}" th:alt="${dog.photo}">
+			<div class="text-box"></div>
+			<!--  DATOS -->
+			<div class="separator"></div>
+			<strong>CUIDANDOLO DESDE:</strong> <a
+				th:text="${dog.getFormatedDate}"></a>
+			<div class="separator"></div>
+			<strong>RAZA:</strong> <a th:text="${dog.dogBreed.breedname}"></a>
+			<div class="separator"></div>
+			<a th:text="CONSULTAR"></a>
+			<div class="separator"></div>
+			<!--  BOTONES -->
+			<div class="spacing"></div>
+			<a id="editbtn" class="fa-solid fa-pen"
+				th:href="@{/views/dogs/edit/} + ${dog.id}" title="Editar registro"></a>
+			<a id="deletebtn" class="fa-solid fa-trash-can"
+				th:href="@{/views/dogs/delete/} + ${dog.id}"
+				title="Eliminar registro"
+				onclick="return confirm('¿Está seguro de eliminar este registro?')"></a>
+			<div class="separator"></div>
+			<!-------------------------------->
 		</div>
 	</div>
+	<button class="fas fa-arrow-up" onclick="topFunction()" id="myBtn"
+		title="Go to top"></button>
 
-
+	<script src="https://kit.fontawesome.com/2b40f6850d.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" th:inline="javascript"
+		th:src="@{/js/scripts.js}"></script>
 </body>
 </html>
