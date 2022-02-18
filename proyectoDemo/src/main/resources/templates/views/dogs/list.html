@@ -13,7 +13,7 @@
 		<h1 th:text="${titulo}"></h1>
 	</div>
 	<div class="boxTittle">
-		<a class="btn-create  btn-sm" th:href="@{/views/dogs/create}"
+		<a class="btn-create  btn-sm" th:href="@{/views/dogs/create/}"
 			th:text="'+ Agregar'" title="Crear nuevo registro"> </a>
 	</div>
 	<div class="box-container">
@@ -27,16 +27,14 @@
 				th:text="${dog.getFormatedDate}"></a>
 			<div class="separator"></div>
 			<strong>RAZA:</strong> <a th:text="${dog.dogBreed.breedname}"></a>
-			<div class="separator"></div>
-			<a th:text="CONSULTAR"></a>
-			<div class="separator"></div>
+			
 			<!--  BOTONES -->
+			<div class="separator"></div>
+			<a id="consultarbtn" th:text="CONSULTAR" th:href="@{/views/mails/consultar/} + ${dog.id}"></a>
+			<div class="separator"></div>
 			<div class="spacing"></div>
-			<a id="editbtn" class="fa-solid fa-pen"
-				th:href="@{/views/dogs/edit/} + ${dog.id}" title="Editar registro"></a>
-			<a id="deletebtn" class="fa-solid fa-trash-can"
-				th:href="@{/views/dogs/delete/} + ${dog.id}"
-				title="Eliminar registro"
+			<a id="editbtn" class="fa-solid fa-pen" th:href="@{/views/dogs/edit/} + ${dog.id}" title="Editar registro"></a>
+			<a id="deletebtn" class="fa-solid fa-trash-can" th:href="@{/views/dogs/delete/} + ${dog.id}" title="Eliminar registro"
 				onclick="return confirm('¿Está seguro de eliminar este registro?')"></a>
 			<div class="separator"></div>
 			<!-------------------------------->

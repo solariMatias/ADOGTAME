@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 		<div class="card-body">
-			<form th:action="@{/views/dogs/save/{id}(id=${perro.getId})}" th:object="${perro}" method="post" enctype="multipart/form-data">
+			<form th:action="@{/views/dogs/save/}" th:object="${perro}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="hidden" th:field="*{id}"> 
 						<label for="age">Fechade ingreso: </label> 

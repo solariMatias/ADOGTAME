@@ -34,10 +34,7 @@ import com.example.demo.service.DogService;
 @Controller
 @RequestMapping("/views/dogs")
 public class DogController {
-	private final static String CREATED_SUCCESSFULLY = "| OBJECT CREATED SUCCESSFULLY| ";
-	private final static String EDITED_SUCCESSFULLY = "| OBJECT WITH ID %d EDITED SUCCESSFULLY |";
 	private final static String DELETED_SUCCESSFULLY = "| OBJECT WITH ID %d DELETED SUCCESSFULLY| ";
-	private final static String OBJECT_ERROR_CREATION = "| ERROR WHILE TRYING TO CREATE A NEW OBJECT ||";
 	private final static String INVALID_ID_DELETE = "| ERROR WHILE TRYING TO DELETE - INVALID ID %d |";
 	private final static String INVALID_ID_EDIT = "| ERROR WHILE TRYING TO EDIT - INVALID ID %d |";
 	private final static String RELATIVE_PATH = "C://Windows//Temp//uploads";
@@ -67,7 +64,7 @@ public class DogController {
 		return "/views/dogs/list";
 	}
 
-	@GetMapping("/create")
+	@GetMapping("/create/")
 	public String createDog(Model model) {
 		comesFromCreatePage = true;
 		List<Breed> listBreeds = this.breedService.listBreed();
@@ -87,7 +84,7 @@ public class DogController {
 			model.addAttribute("perro", perro);
 			model.addAttribute("breed", listBreeds);
 			doggoPhoto = perro.getPhoto();
-			model.addAttribute("image", perro.getPhoto());
+			model.addAttribute("image", doggoPhoto);
 			return "/views/dogs/createForm";
 		} else {
 			System.out.printf(INVALID_ID_EDIT, idDog);
@@ -109,7 +106,7 @@ public class DogController {
 
 	}
 
-	@PostMapping("/save")
+	@PostMapping("/save/")
 	public String save(@RequestParam(name = "file", required = false) MultipartFile photo,
 			@Valid @ModelAttribute("perro") Dog dog, BindingResult result, Model model) {
 
