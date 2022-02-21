@@ -7,7 +7,8 @@
 <link rel="stylesheet" th:href="@{/css/liststyle.css}">
 <link rel='styleshet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 <body>
-	<nav th:replace="planillas/template :: navbar"></nav>
+<header th:replace="planillas/template :: header"></header>
+	
 	<div class="separatorTittle"></div>
 	<div class="ttitlePage">
 		<h1 th:text="${titulo}"></h1>
@@ -49,5 +50,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" th:inline="javascript"
 		th:src="@{/js/scripts.js}"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+		
 </body>
 </html>

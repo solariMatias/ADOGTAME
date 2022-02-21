@@ -6,28 +6,31 @@
 <title>ADOGTAME</title>
 
 </head>
+<link rel="stylesheet" th:href="@{/css/createformstyle.css}">
 <body>
 
 	<nav th:replace="planillas/template :: navbar"></nav>
-	<div class="container">
+	<div id="box" class="container">
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 		<div class="card-body">
 			<form th:action="@{/views/dogs/save/}" th:object="${perro}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="hidden" th:field="*{id}"> 
 						<label for="age">Fechade ingreso: </label> 
-							<input type="date" th:field="*{age}" class="form-control" max="2999-12-31"> 
+							<input id="dateInput"type="date" th:field="*{age}" class="form-control" max="2999-12-31"> 
 							<small class="form-text text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small>
 				</div>
 				<div class="form-group">
 					<label for="raza">Raza del perro: </label> 
-					<select th:field="*{dogBreed}" class="form-control" id="select">
+					<select th:field="*{dogBreed}" class="form-control" id="selectInput">
 						<option th:each="dogBreed:${breed}" th:value="${dogBreed.getId}" th:text="${dogBreed.getBreedname}" />
 					</select>
 				</div>
-				<div class="form-group">
+				<div id="imageSpace" class="form-group">
+			<img id = "myImg1" th:if="${image != null}" th:src="@{'/uploads/'+${image}}" />
+			<img id = "myImg2" th:unless="${image != null}" th:src="@{/images/default_image.png}" />
+					
 					<input id="imgInp" type="file" name="file"/>
-					<img class ="form-text"id="blah" src="#" alt="your image" width="250px" height="250px" th:src="@{'/uploads/'+${image}}"/>
 					<small class="form-text text-danger" th:if="${errorImage}" th:text="${errorImage}"></small>
 				</div>
 				<input type="submit" class="btn btn-primary" value="Guardar">

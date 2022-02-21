@@ -18,10 +18,16 @@ function topFunction() {
 	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+	
 //Preview image when uploading on input
 imgInp.onchange = evt => {
-  const [file] = imgInp.files
-  if (file) {
-    blah.src = URL.createObjectURL(file)
-  }
+	var imgToChange = document.getElementById("myImg1")
+	if(!imgToChange){
+		imgToChange = document.getElementById("myImg2")
+	}
+  	const [file] = imgInp.files
+	if (file) {
+		 imgToChange.src = URL.createObjectURL(file)
+		 }
 }
+

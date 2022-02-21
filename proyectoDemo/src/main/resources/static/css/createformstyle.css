@@ -1,0 +1,18 @@
+#box{
+	background-color :pink;
+	position: relative;
+	border-radius: 20px;
+	border: 3px solid #ddd;
+	border-width: 5px;
+}
+#dateInput, #selectInput{
+	width: 200px;
+	
+}
+#myObj, #myImg {
+	width: 400px;
+	height: 400px;
+}
+#myObj:focus {
+  outline: none;
+}

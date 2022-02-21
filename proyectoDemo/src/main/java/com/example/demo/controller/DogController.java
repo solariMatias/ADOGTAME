@@ -3,28 +3,21 @@ package com.example.demo.controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Breed;
 import com.example.demo.entity.Dog;
@@ -34,9 +27,9 @@ import com.example.demo.service.DogService;
 @Controller
 @RequestMapping("/views/dogs")
 public class DogController {
-	private final static String DELETED_SUCCESSFULLY = "| OBJECT WITH ID %d DELETED SUCCESSFULLY| ";
-	private final static String INVALID_ID_DELETE = "| ERROR WHILE TRYING TO DELETE - INVALID ID %d |";
-	private final static String INVALID_ID_EDIT = "| ERROR WHILE TRYING TO EDIT - INVALID ID %d |";
+	private final static String SAVED_SUCCESSFULLLY = "REGISTRO GUARDADO EXITOSAMENTE";
+	private final static String DELETED_SUCCESSFULLY = "REGISTRO ELIMINADO EXITOSAMENTE";
+	private final static String INVALID_ID = "ERROR: EL ID NO ES VALIDO";
 	private final static String RELATIVE_PATH = "C://Windows//Temp//uploads";
 	private final static String MISSING_INPUT_DATA = "Error a la hora de registrar";
 	private final static String IMG_NO_FILE_ON_INPUT = "Debe ingresar una foto";
@@ -49,6 +42,7 @@ public class DogController {
 
 	public DogController() {
 		this.errors = new String[] { IMG_NO_FILE_ON_INPUT, IMG_ERROR_EXTERNSION, IMG_MAX_SIZE };
+		doggoPhoto = null;
 	}
 
 	@Autowired
@@ -59,7 +53,7 @@ public class DogController {
 	@GetMapping("/")
 	public String listDogs(Model model) {
 		List<Dog> listDogs = dogService.listAll();
-		model.addAttribute("titulo", "LISTADO DE PERROS");
+		model.addAttribute("titulo", "NUESTRAS MASCOTAS");
 		model.addAttribute("perros", listDogs);
 		return "/views/dogs/list";
 	}
@@ -75,7 +69,7 @@ public class DogController {
 	}
 
 	@GetMapping("/edit/{id}")
-	public String editDog(@PathVariable("id") Long idDog, Model model) {
+	public String editDog(@PathVariable("id") Long idDog, Model model, RedirectAttributes attribute) {
 		if (verifyID(idDog)) {
 			comesFromCreatePage = false;
 			Dog perro = dogService.searchDogById((idDog));
@@ -87,20 +81,20 @@ public class DogController {
 			model.addAttribute("image", doggoPhoto);
 			return "/views/dogs/createForm";
 		} else {
-			System.out.printf(INVALID_ID_EDIT, idDog);
+			attribute.addFlashAttribute("error", INVALID_ID);
 			return "redirect:/views/dogs/";
 		}
 
 	}
 
 	@GetMapping("/delete/{id}")
-	public String deleteDog(@PathVariable("id") Long idDog) {
+	public String deleteDog(@PathVariable("id") Long idDog, RedirectAttributes attribute) {
 		if (verifyID(idDog)) {
 			dogService.delete(idDog);
-			System.out.printf(DELETED_SUCCESSFULLY, idDog);
+			attribute.addFlashAttribute("deleted", DELETED_SUCCESSFULLY);
 			return "redirect:/views/dogs/";
 		} else {
-			System.out.printf(INVALID_ID_DELETE, idDog);
+			attribute.addFlashAttribute("error", INVALID_ID);
 			return "redirect:/views/dogs/";
 		}
 
@@ -108,7 +102,7 @@ public class DogController {
 
 	@PostMapping("/save/")
 	public String save(@RequestParam(name = "file", required = false) MultipartFile photo,
-			@Valid @ModelAttribute("perro") Dog dog, BindingResult result, Model model) {
+			@Valid @ModelAttribute("perro") Dog dog, BindingResult result, Model model, RedirectAttributes attribute) {
 
 		List<Breed> listBreeds = this.breedService.listBreed();
 		if (comesFromCreatePage) {
@@ -117,6 +111,7 @@ public class DogController {
 				savePhoto(photo);
 				dog.setPhoto(photo.getOriginalFilename());
 				dogService.save(dog);
+				attribute.addFlashAttribute("created", SAVED_SUCCESSFULLLY);
 			} else {
 				model.addAttribute("titulo", "INGRESE DATOS: " + MISSING_INPUT_DATA);
 				model.addAttribute("perro", dog);
@@ -130,6 +125,7 @@ public class DogController {
 				if (!result.hasErrors()) {
 					dog.setPhoto(doggoPhoto);
 					dogService.save(dog);
+					attribute.addFlashAttribute("created", SAVED_SUCCESSFULLLY);
 				} else {
 					model.addAttribute("titulo", "INGRESE DATOS: " + MISSING_INPUT_DATA);
 					model.addAttribute("perro", dog);
@@ -142,6 +138,7 @@ public class DogController {
 				savePhoto(photo);
 				dog.setPhoto(photo.getOriginalFilename());
 				dogService.save(dog);
+				attribute.addFlashAttribute("created", SAVED_SUCCESSFULLLY);
 			}
 		}
 		return "redirect:/views/dogs/";

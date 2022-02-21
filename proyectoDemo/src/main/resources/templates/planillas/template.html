@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title th:fragment="pageTitle">ADOGTAME</title>
 
-<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/templatestyle.css}">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -25,7 +25,8 @@
 	rel="stylesheet">
 </head>
 <body>
-	<header class="header sticky-top">
+	<header class="header sticky-top" th:fragment="header">
+	<!-- Navbar -->
 		<nav
 			class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top"
 			id="navbar" th:fragment="navbar">
@@ -51,6 +52,33 @@
 				</div>
 			</div>
 		</nav>
+		<!-- Messages-->
+		<div id="popup">
+			<div class="alert alert-success alert-dismissable" th:if="${created != null}">
+				<label th:text="${created}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+			<div class="alert alert-warning alert-dismissable" th:if="${deleted!= null}">
+				<label th:text="${deleted}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+			<div class="alert alert-danger alert-dismissable" th:if="${error != null}">
+				<label th:text="${error}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+			<div class="alert alert-info alert-dismissable" th:if="${sent != null}">
+				<label th:text="${sent}"></label>
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// close the div in 5 secs
+			window.setTimeout("closeHelpDiv();", 5000);
+			
+			function closeHelpDiv(){
+			document.getElementById("popup").style.display=" none";
+			}
+		</script>
 	</header>
 	<!-- Footer -->
 	<div class="container">
@@ -73,6 +101,6 @@
 			<!-- Copyright -->
 		</footer>
 	</div>
-	<!-- End of .container -->
+	
 </body>
 </html>
