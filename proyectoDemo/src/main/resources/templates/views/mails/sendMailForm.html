@@ -9,7 +9,7 @@
 
 	<nav th:replace="planillas/template :: navbar"></nav>
 	
-	<div class="container">
+	<div class="container border">
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 		<div class="card-body">
 			<form th:action="@{/views/mails/consultar/{id}(id=${perro})}" th:object="${perro}"method="post" enctype="multipart/form-data">	

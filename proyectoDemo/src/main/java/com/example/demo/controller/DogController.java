@@ -62,7 +62,7 @@ public class DogController {
 	public String createDog(Model model) {
 		comesFromCreatePage = true;
 		List<Breed> listBreeds = this.breedService.listBreed();
-		model.addAttribute("titulo", "Alta de perro");
+		model.addAttribute("titulo", "INGRERSE DATOS");
 		model.addAttribute("perro", new Dog());
 		model.addAttribute("breed", listBreeds);
 		return "/views/dogs/createForm";
@@ -74,7 +74,7 @@ public class DogController {
 			comesFromCreatePage = false;
 			Dog perro = dogService.searchDogById((idDog));
 			List<Breed> listBreeds = this.breedService.listBreed();
-			model.addAttribute("titulo", "INGRESE DATOS:");
+			model.addAttribute("titulo", "INGRESE DATOS");
 			model.addAttribute("perro", perro);
 			model.addAttribute("breed", listBreeds);
 			doggoPhoto = perro.getPhoto();
@@ -113,7 +113,7 @@ public class DogController {
 				dogService.save(dog);
 				attribute.addFlashAttribute("created", SAVED_SUCCESSFULLLY);
 			} else {
-				model.addAttribute("titulo", "INGRESE DATOS: " + MISSING_INPUT_DATA);
+				model.addAttribute("titulo", "INGRESE DATOS - " + MISSING_INPUT_DATA);
 				model.addAttribute("perro", dog);
 				model.addAttribute("breed", listBreeds);
 				if (errorNumber != -1)
@@ -127,7 +127,7 @@ public class DogController {
 					dogService.save(dog);
 					attribute.addFlashAttribute("created", SAVED_SUCCESSFULLLY);
 				} else {
-					model.addAttribute("titulo", "INGRESE DATOS: " + MISSING_INPUT_DATA);
+					model.addAttribute("titulo", "INGRESE DATOS - " + MISSING_INPUT_DATA);
 					model.addAttribute("perro", dog);
 					model.addAttribute("breed", listBreeds);
 					model.addAttribute("image", doggoPhoto);

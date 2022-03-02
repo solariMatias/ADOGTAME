@@ -21,9 +21,9 @@ function topFunction() {
 	
 //Preview image when uploading on input
 imgInp.onchange = evt => {
-	var imgToChange = document.getElementById("myImg1")
+	var imgToChange = document.getElementById("dogImg")
 	if(!imgToChange){
-		imgToChange = document.getElementById("myImg2")
+		imgToChange = document.getElementById("defaultImg")
 	}
   	const [file] = imgInp.files
 	if (file) {
