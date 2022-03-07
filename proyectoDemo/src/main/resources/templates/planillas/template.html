@@ -4,55 +4,52 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title th:fragment="pageTitle">ADOGTAME</title>
 
 <link rel="stylesheet" th:href="@{/css/templatestyle.css}">
 <link
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap"
 	rel="stylesheet">
+	
+<link  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
-	<header class="header sticky-top" th:fragment="header">
+	
 	<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
-			id="navbar" th:fragment="navbar">
-			<div class="container">
-				<a class="navbar-brand" th:href="@{/}"> <strong
-					class="h7 mb-0 font-weight-bold text-uppercase" id="logo">ADOGTAME</strong></a>
-				<button class="navbar-toggler navbar-toggler-right" type="button"
-					data-toggle="collapse" data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="true"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio
-								<span class="sr-only">(current)</span>
-						</a></li>
-						<li class="nav-item"><a class="nav-link"
-							th:href="@{/views/dogs/}">Perros</a></li>
-						<li class="nav-item"><a class="nav-link"
-							th:href="@{/#contact}">Contacto</a></li>
-					</ul>
-				</div>
-			</div>
+	<div id="wrapper">
+		<nav id="navbar" th:fragment="navbar">
+		   <div class="menu-icon">
+		      <i class="fa fa-bars fa-2x"></i>
+		   </div>
+		   <div class="logo">
+		      <a th:href="@{/}">ADOGTAME</a>
+		   </div>
+		   <div class="menu">
+			   <ul>
+				   <li><a th:href="@{/}">Inicio</a></li>
+				   <li><a th:href="@{/views/dogs/}">Perros</a></li>
+				   <li><a th:href="@{/#aboutus}">Sobre nosotros</a></li>
+				   <li><a th:href="@{/#contact}">Contacto</a></li>
+			   </ul>
+		    </div>
 		</nav>
-		<!-- Messages-->
-		<div id="popup">
+	  </div>
+		<!-- Operation Result Messages-->
+		<div id="popup" th:fragment="popupMessages">
 			<div class="alert alert-success alert-dismissable" th:if="${created != null}">
 				<label th:text="${created}"></label>
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -70,15 +67,6 @@
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 			</div>
 		</div>
-		<script type="text/javascript">
-			//Close popup in 5 secs
-			window.setTimeout("closeHelpDiv();", 5000);
-			
-			function closeHelpDiv(){
-			document.getElementById("popup").style.display=" none";
-			}
-		</script>
-	</header>
 	<!-- Footer -->
 
 		<footer th:fragment="contact" id="contact">
@@ -98,7 +86,9 @@
 			<!-- Copyright -->
 			</div>
 		</footer>
-
-	
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/scripts.js}"></script>
 </body>
 </html>

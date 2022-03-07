@@ -2,43 +2,35 @@ html {
 	scroll-behavior: smooth
 }
 
-span {
-	color: white;
-	font-weight: bold;
-	background-color: black;
-}
-
-a {
-	color: white;
-}
-
 .header {
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+	width: 100%;
+	height: 100vh;
 	background-image: url("../images/bg_image.jpg");
-	background-position: center top;
+	background-position: center;
 	background-size: cover;
-	background-repeat: no-repeat;
 }
 
-.middle-images {
-	background-image: linear-gradient(to right, #B3FAFF 0%, #4DB8C0 100%);
-	position: relative;
-	height: 84vh;
+#navbar {
+	position: fixed;
+}
+#navbar .logo{
+	position: fixed;
+}
+/* IMAGES SECTION*/
+#aboutus {
+	background: linear-gradient(to right, #B3FAFF 0%, #4DB8C0 100%);
+	height: 100vh;
 	width: 100%;
+	text-align: center;
+	justify-content: center;
 }
 
 #leftImg, #rightImg {
 	display: inline-block;
-	border: 1px solid black;
-	position: absolute;
-	justify-content: center;
+	padding-top: 4%;
 	height: 60vh;
-	margin-top: 8vh;
-	text-align: center;
 	max-width: 60vh;
+	height: 60vh;
 }
 
 #leftImg img, #rightImg img {
@@ -49,11 +41,11 @@ a {
 }
 
 #leftImg {
-	left: 12%;
+	margin-left: 20px;
 }
 
 #rightImg {
-	left: 60%;
+	
 }
 
 b {
@@ -62,19 +54,29 @@ b {
 
 p {
 	font-size: 3vh;
+	
+}
+/*----------------*/
+#separator{
+	width: 100%;
+	height: 5vh;
+	background: linear-gradient(to right, #B3FAFF 0%, #4DB8C0 100%);
+}
+@media ( max-width : 1200px) {
+	
+	#leftImg {
+		margin-right: 0;
+	}
 }
 
-@media ( max-width :760px) {
-	.middle-images {
+@media ( max-width :1070px) {
+	#aboutus {
+	
 		width: 100%;
-		height: 940px;
+		height: auto;
 		text-align: center;
 	}
-	#leftImg, #rightImg {
-		position: relative;
-		left: 0;
-	}
-	#rightImg {
-		margin-top: 40px;
+	#leftImg {
+		margin-right: 0;
 	}
 }

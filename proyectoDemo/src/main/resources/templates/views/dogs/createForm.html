@@ -15,25 +15,31 @@
 		<div class="card-body">
 			<form th:action="@{/views/dogs/save/}" th:object="${perro}" method="post" enctype="multipart/form-data">
 				<div id="inputSection">
-					<div id="inputDate">
-					<input type="hidden" th:field="*{id}">
-						<label for="age">Fecha de ingreso: </label> 
-						<input type="date" th:field="*{age}" class="form-control" max="2999-12-31"> 
-						<small class="form-text text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small>
-						
+					<div id="textInputSection">
+						<div id="textSection">
+							<div id="inputDate">
+							<input type="hidden" th:field="*{id}">
+								<label for="age">Fecha de ingreso: </label> 
+								<input type="date" th:field="*{age}" class="form-control" max="2999-12-31"> 
+								<small class="form-text text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small>
+								
+							</div>
+							<div id="inputBreed">
+								<label for="raza">Raza del perro: </label> 
+								<select th:field="*{dogBreed}" class="form-control" id="selectInput">
+									<option th:each="dogBreed:${breed}" th:value="${dogBreed.getId}" th:text="${dogBreed.getBreedname}" />
+								</select>
+							</div>
+						</div>
 					</div>
-					<div id="inputBreed">
-						<label for="raza">Raza del perro: </label> 
-						<select th:field="*{dogBreed}" class="form-control" id="selectInput">
-							<option th:each="dogBreed:${breed}" th:value="${dogBreed.getId}" th:text="${dogBreed.getBreedname}" />
-						</select>
-					</div>
-					
 					<div id="imageInputSection" class="form-group">
-						<img id = "dogImg" th:if="${image != null}" th:src="@{'/uploads/'+${image}}" />
-						<img id = "defaultImg" th:unless="${image != null}" th:src="@{/images/default_image.png}" />
-						<input id="imgInp" type="file" name="file" maxlength=10 />
-						<small class="form-text text-danger" th:if="${errorImage}" th:text="${errorImage}"></small>
+						<div id="imageSection">
+							<img id = "dogImg" th:if="${image != null}" th:src="@{'/uploads/'+${image}}" />
+							<img id = "defaultImg" th:unless="${image != null}" th:src="@{/images/default_image.png}" />
+							<input id="imgInp" type="file" name="file" maxlength=10 />
+							<small class="form-text text-danger" th:if="${errorImage}" th:text="${errorImage}"></small>
+							
+						</div>
 					</div>
 					
 				</div>

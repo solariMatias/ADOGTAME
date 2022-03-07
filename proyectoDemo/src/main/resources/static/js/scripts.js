@@ -14,20 +14,37 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-	document.body.scrollTop = 0; // For Safari
 	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-	
+
 //Preview image when uploading on input
 imgInp.onchange = evt => {
 	var imgToChange = document.getElementById("dogImg")
-	if(!imgToChange){
+	if (!imgToChange) {
 		imgToChange = document.getElementById("defaultImg")
 	}
-  	const [file] = imgInp.files
+	const [file] = imgInp.files
 	if (file) {
-		 imgToChange.src = URL.createObjectURL(file)
-		 }
+		imgToChange.src = URL.createObjectURL(file)
+	}
 }
 
+
+// dissappear navbar on scroll
+$(document).ready(function() {
+	$(".menu-icon").on("click", function() {
+		$("nav ul").toggleClass("showing");
+	});
+});
+
+$(window).on("scroll", function() {
+	if ($(window).scrollTop()>150) {
+		$('nav').addClass('black');
+	}
+
+	else {
+		$('nav').removeClass('black');
+	}
+})
+//----------------

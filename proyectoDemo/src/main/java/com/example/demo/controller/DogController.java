@@ -62,7 +62,7 @@ public class DogController {
 	public String createDog(Model model) {
 		comesFromCreatePage = true;
 		List<Breed> listBreeds = this.breedService.listBreed();
-		model.addAttribute("titulo", "INGRERSE DATOS");
+		model.addAttribute("titulo", "INGRESE DATOS");
 		model.addAttribute("perro", new Dog());
 		model.addAttribute("breed", listBreeds);
 		return "/views/dogs/createForm";

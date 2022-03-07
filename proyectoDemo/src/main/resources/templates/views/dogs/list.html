@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="planillas/template :: head">
 <meta charset="UTF-8">
 </head>
 <link rel="stylesheet" th:href="@{/css/liststyle.css}">
 <link rel='styleshet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 <body>
-<header th:replace="planillas/template :: header"></header>
-	
-	<div class="separatorTittle"></div>
-	<div class="ttitlePage">
-		<h1 th:text="${titulo}"></h1>
+	<div id="navbar">
+		<nav  th:replace="planillas/template :: navbar"></nav>
 	</div>
-	<div class="boxTittle">
-		<a class="btn-create  btn-sm" th:href="@{/views/dogs/create/}"
-			th:text="'+ Agregar'" title="Crear nuevo registro"> </a>
+	<div id="tittleBox">
+		<div class="separatorTittle"></div>
+		<div class="ttitlePage">
+			<h1 th:text="${titulo}"></h1>
+		</div>
+		<div class="boxTittle">
+			<a class="btn-create  btn-sm" th:href="@{/views/dogs/create/}"
+				th:text="'+ Agregar'" title="Crear nuevo registro"> </a>
+		</div>
 	</div>
 	<div class="box-container">
 		<div class="box text-center" th:each="dog:${perros}">
@@ -41,16 +43,20 @@
 			<!-------------------------------->
 		</div>
 	</div>
-	<button class="fas fa-arrow-up" onclick="topFunction()" id="myBtn"
-		title="Go to top"></button>
+	<button class="fas fa-arrow-up" onclick="topFunction()" id="myBtn" title="Go to top"></button>
+	<div th:replace="planillas/template :: popupMessages"></div>
+	<script type="text/javascript">
+	window.setTimeout("closeHelpDiv();", 5000);
 
-	<script src="https://kit.fontawesome.com/2b40f6850d.js"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" th:inline="javascript"
-		th:src="@{/js/scripts.js}"></script>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+	function closeHelpDiv() {
+		document.getElementById("popup").style.display = " none";
+	}
+	</script>
+	
+	<script src="https://kit.fontawesome.com/2b40f6850d.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" th:inline="javascript" th:src="@{/js/scripts.js}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 		
 </body>
 </html>

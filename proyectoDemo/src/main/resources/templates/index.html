@@ -4,30 +4,49 @@
 <meta charset="UTF-8">
 <title>ADOGTAME</title>
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=2.00">
-
 <link rel="stylesheet" th:href="@{/css/homestyle.css}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@649&display=swap" rel="stylesheet">
-<body data-spy="scroll" data-target="navbar">
-	<header class="header">
-		<nav class="navbar" th:replace="planillas/template :: navbar"></nav>
-	</header>
-	<div class="middle-images">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<body>
+	<div id="wrapper">
+		<header class="header">
+			<nav id="navbar" th:replace="planillas/template :: navbar"></nav>
+		</header>
+	</div>
+	<div id="aboutus">
+	
 		<div id="leftImg">
-			<img th:src="@{/images/dogs_human.png}" >
-			<b>LOS CUIDAMOS</b>
-			<p>Cuidamos a cada uno de nuestras mascotas y les damos el amor que merecen</p>
+			<img th:src="@{/images/dogs_human.png}"> <b>GUARDERIA
+				CANINA</b>
+			<p>Usa nuestra plataforma para elegir a tu próxima mascota</p>
 		</div>
 		<div id="rightImg">
-			<img  th:src="@{/images/dogs.png}">
-			<b>VOS ELEGIS</b>
-			<p>Sentite cómodo eligiendo a cuál perro hacer feliz en su vida</p>
+			<img th:src="@{/images/dogs.png}"> <b>VOS ELEGIS</b>
+			<p>Sentite cómodo eligiendo a tu próxima mascota para que lo
+				acompañes en su vida</p>
 		</div>
 	</div>
-	
+	<div id="separator"></div>
 	<footer id="contact" th:replace="planillas/template :: footer"></footer>
-</body>
+	<script>
+		$(document).ready(function() {
+			$(".menu-icon").on("click", function() {
+				$("nav ul").toggleClass("showing");
+			});
+		});
 
+		// Scrolling Effect
+
+		$(window).on("scroll", function() {
+			if ($(window).scrollTop() > 500) {
+				$('nav').addClass('black');
+			} else {
+				$('nav').removeClass('black');
+			}
+		})
+	</script>
+	
+</body>
 </html>

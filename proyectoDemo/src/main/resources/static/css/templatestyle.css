@@ -2,41 +2,132 @@
 	font-size: 0.9rem !important;
 }
 
-.header {
-	background-color: #00d2ff;
-	background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
-	width: 100%;
-}
 /* ------------- NAVBAR ---------------*/
-#navbar {
+
+.logo {
+	line-height: 60px;
+	position: absolute;
+	float: left;
+	margin: 16px 46px;
+	color: white;
+	font-weight: bold;
+	font-size: 3.5vh;
+	letter-spacing: 2px;
+	text-decoration: none;
+}
+
+nav {
+	position: flex;
 	width: 100%;
-	padding-bottom: 2.5%;
-	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #ccc;
-	text-align: center;
-	background-image: linear-gradient(to top, #f2f2f2 0%, #d9d9d9 100%);
+	line-height: 60px;
 }
 
-#navbar a {
+nav ul {
+	line-height: 60px;
+	list-style: none;
+	background: black;
+	overflow: hidden;
+	color: #fff;
+	padding: 0;
+	text-align: right;
+	margin: 0;
+	padding-right: 40px;
+	transition: 1s;
+}
+
+nav.black ul {
+	background: #B3FAFF;
+}
+
+nav.black a {
+	text-decoration: none;
 	color: black;
-	display: inline-block;
-	position: relative;
-	top: 14px;
 }
 
-#navbar a:hover {
+nav ul li {
+	display: inline-block;
+	padding: 16px 40px;;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: white;
+	font-size: 2.5vh;
+}
+
+nav a {
+	color: white;
+}
+
+nav a:hover {
+	text-decoration: none;
 	color: gray;
 }
 
-/* ------------- FOOTER ---------------*/
+.menu-icon {
+	line-height: 60px;
+	width: 100%;
+	background: #000;
+	text-align: right;
+	box-sizing: border-box;
+	padding: 15px 24px;
+	cursor: pointer;
+	color: #fff;
+	display: none;
+}
 
+@media ( max-width : 786px) {
+	nav.black ul {
+		background: #B3FAFF;
+	}
+	nav.black a {
+		text-decoration: none;
+		color: black;
+	}
+	nav.black .menu-icon {
+		display: block;
+		background: #B3FAFF;
+	}
+	.logo {
+		position: fixed;
+		top: 0;
+		margin-top: 16px;
+	}
+	nav ul {
+		max-height: 0px;
+		background: black;
+	}
+	nav ul li a {
+		text-decoration: none;
+		color: white;
+		font-size: 2.5vh;
+	}
+	.showing {
+		max-height: 34em;
+	}
+	nav ul li {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 24px;
+		text-align: center;
+	}
+	.menu-icon {
+		display: block;
+		background: black;
+	}
+	nav a:hover {
+		text-decoration: none;
+		color: gray;
+	}
+}
+
+/* ------------- FOOTER ---------------*/
 #contact {
 	background-color: #292E35;
 	text-align: center;
 	position: relative;
 	font-size: 3vh;
 	width: 100%;
-	
 }
 
 #pageTextFooter {
@@ -50,7 +141,7 @@
 	width: 100%;
 }
 
-.fa {
+#footer .fa {
 	padding: 3vh;
 	margin: 0 15px 15px;
 	margin-top: 18vh;
@@ -64,12 +155,11 @@
 }
 
 .bottomtext-footer {
-	padding-top:3vh;
+	padding-top: 3vh;
 	color: rgba(255, 255, 255, 0.3);
 	font-size: 3vh;
 	text-align: center;
 	background-color: #292E35;
-	
 }
 /* ------------- POPUP ---------------*/
 #popup {
