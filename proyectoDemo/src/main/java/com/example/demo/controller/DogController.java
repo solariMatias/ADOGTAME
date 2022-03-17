@@ -162,8 +162,7 @@ public class DogController {
 	}
 
 	private boolean verifyID(Long ID) {
-		boolean verified = ID > 0 && dogService.exist(ID);
-		return verified;
+		return ID > 0 && dogService.exist(ID);
 	}
 
 	private void savePhoto(MultipartFile photoToAdd) {
